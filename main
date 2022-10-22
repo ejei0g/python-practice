@@ -1,0 +1,97 @@
+print("Hello World");
+print("메모리 주소에 이름을 붙였데요!!")
+a = 2
+b = 3
+c = a + b
+c = 1
+print(c)
+print(c)
+print(c)
+print(c);
+print("--------------------")
+
+my_name = "nico"
+print(my_name);
+
+dead = True
+print(dead)
+dead = False
+print(dead);
+dead = "dead"
+print(dead);
+print(dead);
+
+# True = "true", False = "false"
+print("True is invalid syntax: Cannot assign")
+print("comment is # not //")
+print(True);
+print("False is not false, True is not true")
+
+print("My name is ", my_name)
+
+border = "==================================="
+print(border);
+
+# Define
+
+# say_hello(); 위에서 아래로 선언보다 위에 있으면 못찾음
+
+def say_hello():
+                     print("Say Hello")
+def say_hello():
+                     print("Say Hello2")
+
+say_hello();
+
+def make_border(str, hello):
+    border = "========\(str)%str========================================"
+    border_title = "### Title: "
+    print(hello, border_title, str, border);
+
+make_border("Argument!", 35)
+
+print("hello \nstr World", "str")
+
+#i arguement(실제 전달한 데이터), parameters
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
