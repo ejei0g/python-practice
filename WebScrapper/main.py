@@ -1,56 +1,41 @@
 from bs4 import BeautifulSoup
 from requests import get
+from extractors.wwr import extract_jobs
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
-base_url = "https://weworkremotely.com/remote-jobs/search?term="
-job = "javascript"
+options = Options()
+#options.add_argument("--no-sandbox")
+#options.add_argument("--disable-dev-shm-usage")
 
-response = get(f"{base_url}{job}")
+browser = webdriver.Chrome(options=options)
+main_url = "https://kr.indeed.com/jobs"
+browser.get(main_url)
+# How to get html?
+source = browser.page_source
+print(source)
+
+
+#jobs = extract_jobs("iOS")
+target = "iOS"
+
+#response = get(f"{main_url}{target}")
+#response = get("https://kr.indeed.com")
+"""
 if response.status_code != 200:
-    print("Fali requests")
+    print("fail")
 else:
-    result = []
-
     soup = BeautifulSoup(response.text, "html.parser")
-    jobs = soup.find_all("section", class_="jobs")
-    for job_section in jobs:
-        job_posts = job_section.find_all("li") # list like python
-        job_posts.pop()
-        for post in job_posts:
-            anchors = post.find_all('a')
-            anchor = anchors[1]
-            link = anchor['href']
-            a = anchor.find_all('span', class_="company")
-            company, kind, region = a
-            #print(company.string)
-            #print(kind.string)
-            #print(region.string)
-            title = anchor.find('span', class_="title")
-            #print(title.string)
-            #print("------")
-            # Save
-            job_data = {
-                'Company': company.string,
-                'Resion': region.string,
-                'Position': title.string
+    print(soup)
+    job_list = soup.find_all('li')
+    print(job_list.count)
+"""
 
-            }
-            result.append(job_data)
+    # Selenium 브라우저 자동화
+    # 왜 봇으로 막혔나? -> http get 리퀘스트를 보냈기 때문
+    # 크롬 브라우저를 실행 -> 해당 브라우저를 방문하는로직을실행
+    # How?
+    # - Scrapping instagram ..etc
 
-    #print(f'"{result}"')
-    for res in result:
-        print(res)
-# positional parameters
-
-#def say_hello(name, age):
-#    print(f"Hello {name} you r {age} years old")
-
-#say_hello("jyl", 11);
-
-# get "a href", company, date
-
-# object, list, length , object
-
-list_of_numbers = [1,2,3]
-first, second, third = list_of_numbers
-
-# span 에서 텍스트 추출 element.string
+    # pkgs.chromium
+    # pkgs.chromedriver
